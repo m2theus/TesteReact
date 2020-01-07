@@ -40,7 +40,10 @@ export const Column = styled.div `
     padding: .25rem;
     min-height: 1px;
     box-sizing: border-box;
-    @media only screen and (min-width: 768px) {
-        width: ${props => (props.mobile ? props.mobile / 12 * 100 : '8:33')}%;
+    @media only screen and (min-width: 360px) {
+        width: ${props => (props.mobile ? (props.mobile / 12) * 100 : '8:33')}%;
+    }
+    @media only screen and (min-width: 720px) {
+        width: ${props => (props.desktop ? (props.desktop / 12) * 100 : '8:33')}%;
     }
     `;
