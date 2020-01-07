@@ -1,0 +1,149 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.header {
+  width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 34px;
+    justify-content: space-between;
+}
+
+.main {
+  height: 100%;
+}
+
+.title-header {
+  color: rgba(212,32,38);
+  opacity: 100%;
+  font-size: 27px;
+  font-family: 'Roboto', sans-serif;
+  line-height:normal;
+  font-weight: 700;
+}
+
+.participante-header {
+  color: rgba(212,32,38);
+  opacity: 100%;
+  font-size: 27px;
+  font-family: 'Roboto', sans-serif;
+  line-height:normal;
+  font-weight: 300;
+}
+
+.subtitle-header {
+  color: rgba(212,32,38);
+  opacity: 100%;
+  font-size: 27px;
+  font-family: 'Roboto', sans-serif;
+  line-height:normal;
+  font-weight: 300;
+}
+
+.container-titles-header{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-self: flex-start;
+
+}
+
+.input-busca {
+  height: 31px;
+  width: 400px;
+  border: solid 1px;
+  border-color: rgba(165,165,165);
+  opacity: 100%;
+  border-radius: 5px;
+}
+
+.label-busca {
+  color: rgba(212,32,38);
+  opacity: 100%;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  line-height:19px;
+  font-weight: 400;
+}
+
+.container-busca {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-card{
+  height: 37px;
+  background-color: rgba(212,32,38);
+  margin-right: 10px;
+  display: flex;
+  justify-content: inherit;
+  align-items: center;
+}
+
+.column-card label{
+  color: white;
+  text-align: center;
+}
+.column-card:last-child{
+  margin-right: 0px !important;
+}
+
+.item-card{
+  margin-right: 10px;
+}
+
+.item-card label{
+  color: black;
+  text-align: center;
+}
+
+.item-card:last-child{
+  margin-right: 0px !important;
+}
+
+.linha-card{
+ border-bottom: solid 1px;
+}
+
+
+
