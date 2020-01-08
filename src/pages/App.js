@@ -27,6 +27,7 @@ export default class App extends React.Component {
     this.setState({
       loading: true
     });
+    console.log(this.state.currentPage);
     const response = await axiosInstance
       .get(
         `/characters?page[limit]=10&page[offset]=${this.state.currentPage *
@@ -42,39 +43,41 @@ export default class App extends React.Component {
       });
   }
 
+  onPageChange = selected => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+    this.setState(old => ({
+      ...old,
+      currentPage: selected.selected
+    }));
+    console.log(this.state.currentPage);
+    this.getDados();
+  };
+
+  onFilterNameChange = event => {
+    const value = event.target.value;
+
+    this.setState({
+      dsPesquisa: value,
+      currentPage: 0
+    });
+
+    this.getDados();
+  };
+
   render() {
-    const onPageChange = selected => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-      this.setState({
-        currentPage: selected.selected
-      });
-      this.getDados();
-    };
-
-    const onFilterNameChange = event => {
-      const value = event.target.value;
-
-      this.setState({
-        dsPesquisa: value,
-        currentPage: 0
-      });
-
-      this.getDados();
-    };
-
     if (!this.state.dados.length) return <div>Carregando...</div>;
 
     return (
       <div className="main">
         <Navbar />
-        <Busca onChange={onFilterNameChange} />
+        <Busca onChange={this.onFilterNameChange} />
         <Card item={this.state.dados} loading={this.state.loading} />
         <Paginate
-          onPageChange={onPageChange}
+          onPageChange={this.onPageChange}
           pageCount={this.state.totalCount}
           isFirstPage={this.state.currentPage === 0}
           isLastPage={this.state.currentPage + 1 >= this.state.totalCount}

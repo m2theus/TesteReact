@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="container-navbar">
         <Row justify="between">
           <Col className="container-titles-header">
             <div
