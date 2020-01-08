@@ -49,12 +49,24 @@
 
 .main {
   height: 100%;
+  padding-right: 42px;
+    padding-left: 42px;
+    padding-top: 20px;
 }
 
-.title-header {
+.big-title-header {
   color: rgba(212,32,38);
   opacity: 100%;
   font-size: 27px;
+  font-family: 'Roboto', sans-serif;
+  line-height:normal;
+  font-weight: 700;
+}
+
+.min-title-header {
+  color: rgba(212,32,38);
+  opacity: 100%;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
   line-height:normal;
   font-weight: 700;
@@ -69,7 +81,7 @@
   font-weight: 300;
 }
 
-.subtitle-header {
+.big-subtitle-header {
   color: rgba(212,32,38);
   opacity: 100%;
   font-size: 27px;
@@ -78,6 +90,14 @@
   font-weight: 300;
 }
 
+.min-subtitle-header {
+  color: rgba(212,32,38);
+  opacity: 100%;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  line-height:normal;
+  font-weight: 300;
+}
 .container-titles-header{
 
   display: flex;
@@ -85,12 +105,16 @@
   justify-content: flex-start;
   align-items: flex-start;
   align-self: flex-start;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
 }
 
 .input-busca {
   height: 31px;
   width: 400px;
+  max-width: 100%;
   border: solid 1px;
   border-color: rgba(165,165,165);
   opacity: 100%;
@@ -114,18 +138,14 @@
 .column-card{
   height: 37px;
   background-color: rgba(212,32,38);
-  margin-right: 10px;
   display: flex;
   justify-content: inherit;
   align-items: center;
+  color: white;
 }
 
 .column-card label{
-  color: white;
-  text-align: center;
-}
-.column-card:last-child{
-  margin-right: 0px !important;
+  margin-left: 5px;
 }
 
 .item-card{
@@ -144,6 +164,67 @@
 .linha-card{
  border-bottom: solid 1px;
 }
+
+.container-card {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin-top: 34px;
+  max-width: 100% !important;
+}
+
+.avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 100%;
+}
+
+.container-paginate {
+  text-align: center;
+  outline: none;
+}
+
+.paginate-break {
+  color: rgba(212, 32, 38, 1);
+  cursor: pointer;
+}
+
+.paginate-container {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+}
+.paginate-container li{
+
+  display: inline-block;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.paginate-item {
+  margin: 12px;
+  border: 1px solid rgba(212, 32, 38, 1);
+  font-size: 21px;
+  color: rgba(212, 32, 38, 1);
+  min-width: 32px;
+  padding: 5.5px;
+  border-radius: 4px;
+  cursor: pointer;
+} 
+.paginate-item a{
+  padding:4px;
+}
+
+
+.paginate-active {
+  color: white;
+  background: rgba(212, 32, 38, 1);
+} 
 
 
 

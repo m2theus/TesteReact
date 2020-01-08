@@ -1,28 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import {Container, Row, Column} from './grid/grid'
-import  '../App.css'
+import React from "react";
+import { array, bool } from "prop-types";
+import { Container, Row, Col, Hidden } from "react-grid-system";
+import "../App.css";
+import ObjHeroesListItem from "./CardItem";
 
 export default class Card extends React.Component {
-    render(){
-        return(
-            <Container>
-                <Row>
-                    <Column className="column-card" mobile='3' desktop='3'><label>Personagem</label> </Column>
-                    <Column className="column-card" mobile='3' desktop='3'> <label>Séries</label></Column>
-                    <Column className="column-card" mobile='3' desktop='6'> <label>Eventos</label></Column>
-                </Row>
-                <Row className="linha-card">
-                    <Column  className="item-card" mobile='3' desktop='3'><label>TOny stark</label> </Column>
-                    <Column className="item-card" mobile='3' desktop='3'> <label>Batman</label></Column>
-                    <Column  className="item-card" mobile='3' desktop='3'> <label>lelele</label></Column>
-                </Row>
-            </Container>
-        );
-    }
+  render() {
+    console.log(this.props)
+    return ( 
+      <Container className="container-card">
+        <Row gutterWidth={10}>
+          <Col xs={12} md={6} xl={3}>
+            <div className="column-card"><label>Personagem</label></div>
+          </Col>
+          <Col xs={0} md={6} xl={9}>
+            <Hidden xs sm>
+              <div className="column-card"><label>Descrição</label></div>
+            </Hidden>
+          </Col>
+        </Row>
+        {  !this.props.loading && this.props.item.length ? 
+        this.props.item.map(item => (
+          <ObjHeroesListItem
+            item={item}
+            key={item.id}
+          />
+        )) : ''}
+      </Container>
+    );
+  }
 }
 
 Card.propTypes = {
-    item: PropTypes.object
-}
+  item: array,
+  loading:bool
+};
