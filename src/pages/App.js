@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Busca from "../components/Busca";
 import Paginate from "../components/Paginate";
 import "../App.css";
+import { axiosInstance } from "../config/Axios";
 
 export default class App extends React.Component {
   constructor() {
@@ -11,7 +12,10 @@ export default class App extends React.Component {
     this.state = {
       dados: [],
       paginaAtual: 0,
-      loading: false
+      loading: false,
+      totalCount: 0,
+      currentPage: 0,
+      dsPesquisa: null
     };
   }
 
@@ -19,49 +23,62 @@ export default class App extends React.Component {
     this.getDados();
   }
 
-  getDados() {
+  async getDados() {
     this.setState({
       loading: true
     });
-    const API_URL =
-      "https://kitsu.io/api/edge/characters?page%" +
-      this.state.paginaAtual +
-      "Blimit%5D=10&page%5Boffset%5D=10";
-
-    fetch(`${API_URL}`, {
-      method: "GET"
-    })
-      .then(res => res.json())
-      .then(json => {
+    const response = await axiosInstance
+      .get(
+        `/characters?page[limit]=10&page[offset]=${this.state.currentPage *
+          10}${this.state.dsPesquisa &&
+          `&filter[name]=${this.state.dsPesquisa}`}`
+      )
+      .then(retorno => {
         this.setState({
-          dados: json.data
-        });
-        console.log(this.state);
-        this.setState({
-          loading: false
+          dados: retorno.data.data,
+          loading: false,
+          totalCount: retorno.data.meta.count / 10
         });
       });
   }
 
- onPageChange({ selected: currentPage })  {
-    
-  };
-
   render() {
+    const onPageChange = selected => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      this.setState({
+        currentPage: selected.selected
+      });
+      this.getDados();
+    };
+
+    const onFilterNameChange = event => {
+      const value = event.target.value;
+
+      this.setState({
+        dsPesquisa: value,
+        currentPage: 0
+      });
+
+      this.getDados();
+    };
+
     if (!this.state.dados.length) return <div>Carregando...</div>;
 
     return (
       <div className="main">
         <Navbar />
-        <Busca />
+        <Busca onChange={onFilterNameChange} />
         <Card item={this.state.dados} loading={this.state.loading} />
-        <Paginate onPageChange={this.onPageChange}
-          pageCount={30}
-          isFirstPage={true}
-          isLastPage={false}/>
-        {/* {this.state.dados.results.map((item, index) => 
-                        <Card key={Math.random()} item={item} />
-                    )} */}
+        <Paginate
+          onPageChange={onPageChange}
+          pageCount={this.state.totalCount}
+          isFirstPage={this.state.currentPage === 0}
+          isLastPage={this.state.currentPage + 1 >= this.state.totalCount}
+        />
       </div>
     );
   }

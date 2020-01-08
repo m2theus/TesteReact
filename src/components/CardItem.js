@@ -1,9 +1,9 @@
 import React from "react";
 import { object, func } from "prop-types";
 import styled from "styled-components";
-import { theme } from "styled-tools";
 import { Row, Col, Hidden } from "react-grid-system";
 import Avatar from "../components/Avatar";
+import HTMLEllipsis from "react-lines-ellipsis/lib/html";
 
 const Item = styled(Row)`
   padding-top: 24px;
@@ -25,7 +25,7 @@ const ItemColuna = styled(Col)`
   height: 112px !important;
 `;
 
-const ObjHeroesListItem = ({ item, onItemClick }) => {
+const ListItem = ({ item, onItemClick }) => {
   return (
     <Item >
       <ItemColuna xs={12} md={6} xl={3}>
@@ -41,7 +41,10 @@ const ObjHeroesListItem = ({ item, onItemClick }) => {
       <ItemColuna xs={0} md={6} xl={9}>
         <Hidden xs sm>
           {item.attributes.description && item.attributes.description.length ? (
-            <label>{item.attributes.description}</label>
+             <HTMLEllipsis
+             maxLine="3"
+             unsafeHTML={item.attributes.description}
+           />
           ) : (
             "Este personagem não possui descrição."
           )}
@@ -51,9 +54,9 @@ const ObjHeroesListItem = ({ item, onItemClick }) => {
   );
 };
 
-ObjHeroesListItem.propTypes = {
+ListItem.propTypes = {
   item: object,
   onItemClick: func
 };
 
-export default ObjHeroesListItem;
+export default ListItem;

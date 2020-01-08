@@ -157,6 +157,12 @@
   text-align: center;
 }
 
+.bar {
+  height: 4px;
+  width: 54px;
+  background-color: rgba(212,32,38)
+}
+
 .item-card:last-child{
   margin-right: 0px !important;
 }
@@ -172,6 +178,7 @@
   padding-left: 0 !important;
   margin-top: 34px;
   max-width: 100% !important;
+  flex: auto;
 }
 
 .avatar {

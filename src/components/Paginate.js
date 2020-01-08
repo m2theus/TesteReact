@@ -9,9 +9,7 @@ export default class Paginate extends React.Component {
     return (
       <div className="container-paginate">
         <ReactPaginate
-          pageCount={2}
-          pageRangeDisplayed={10}
-          marginPagesDisplayed={10}
+          pageCount={this.props.pageCount}
           previousLabel={<ArrowLeft opaque={this.props.isFirstPage} />}
           nextLabel={<ArrowRigth opaque={this.props.isLastPage} />}
           breakClassName="paginate-break"

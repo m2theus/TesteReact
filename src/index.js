@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from './pages/App';
-import Detalhes from './pages/Detalhes';
 
 ReactDOM.render((
     <BrowserRouter>

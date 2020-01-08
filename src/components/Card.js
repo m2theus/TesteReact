@@ -2,7 +2,7 @@ import React from "react";
 import { array, bool } from "prop-types";
 import { Container, Row, Col, Hidden } from "react-grid-system";
 import "../App.css";
-import ObjHeroesListItem from "./CardItem";
+import ListItem from "./CardItem";
 
 export default class Card extends React.Component {
   render() {
@@ -21,7 +21,7 @@ export default class Card extends React.Component {
         </Row>
         {  !this.props.loading && this.props.item.length ? 
         this.props.item.map(item => (
-          <ObjHeroesListItem
+          <ListItem
             item={item}
             key={item.id}
           />
