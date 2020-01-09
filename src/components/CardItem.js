@@ -27,7 +27,7 @@ const ItemColuna = styled(Col)`
 
 const ListItem = ({ item, onItemClick }) => {
   return (
-    <Item >
+    <Item onClick={() => onItemClick(item)}>
       <ItemColuna xs={12} md={6} xl={3}>
         <Row align="center">
           <Col xs="content">

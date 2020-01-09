@@ -24,6 +24,7 @@ export default class Card extends React.Component {
           <ListItem
             item={item}
             key={item.id}
+            onItemClick={this.props.onItemClick}
           />
         )) : ''}
       </Container>

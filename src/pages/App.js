@@ -5,6 +5,7 @@ import Busca from "../components/Busca";
 import Paginate from "../components/Paginate";
 import "../App.css";
 import { axiosInstance } from "../config/Axios";
+import { useHistory } from "react-router-dom";
 
 export default class App extends React.Component {
   constructor() {
@@ -15,24 +16,30 @@ export default class App extends React.Component {
       loading: false,
       totalCount: 0,
       currentPage: 0,
-      dsPesquisa: null
+      dsPesquisa: null,
+      hero: []
     };
   }
+  history = useHistory();
+  onItemClick = hero => {
+    this.setState({
+      hero: hero
+    });
+    this.history.push(`/detalhes/${hero.id}`);
+  };
 
   componentDidMount() {
     this.getDados();
   }
 
-  async getDados() {
+  async getDados(page = 0) {
     this.setState({
       loading: true
     });
-    console.log(this.state.currentPage);
     const response = await axiosInstance
       .get(
-        `/characters?page[limit]=10&page[offset]=${this.state.currentPage *
-          10}${this.state.dsPesquisa &&
-          `&filter[name]=${this.state.dsPesquisa}`}`
+        `/characters?page[limit]=10&page[offset]=${page * 10}${this.state
+          .dsPesquisa && `&filter[name]=${this.state.dsPesquisa}`}`
       )
       .then(retorno => {
         this.setState({
@@ -49,12 +56,7 @@ export default class App extends React.Component {
       behavior: "smooth"
     });
 
-    this.setState(old => ({
-      ...old,
-      currentPage: selected.selected
-    }));
-    console.log(this.state.currentPage);
-    this.getDados();
+    this.getDados(selected.selected);
   };
 
   onFilterNameChange = event => {
@@ -75,7 +77,11 @@ export default class App extends React.Component {
       <div className="main">
         <Navbar />
         <Busca onChange={this.onFilterNameChange} />
-        <Card item={this.state.dados} loading={this.state.loading} />
+        <Card
+          onItemClick={this.onItemClick}
+          item={this.state.dados}
+          loading={this.state.loading}
+        />
         <Paginate
           onPageChange={this.onPageChange}
           pageCount={this.state.totalCount}
