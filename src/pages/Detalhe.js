@@ -27,7 +27,6 @@ class Detalhe extends React.Component {
     await axiosInstance
       .get(`/characters/${this.props.match.params.id}`)
       .then(retorno => {
-          console.log(retorno);
         this.setState({
           loading: false,
           hero: retorno.data.data
