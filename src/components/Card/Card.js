@@ -1,7 +1,7 @@
 import React from "react";
 import { array, bool } from "prop-types";
 import { Container, Row, Col, Hidden } from "react-grid-system";
-import "../App.css";
+import "../../App.css";
 import ListItem from "./CardItem";
 
 export default class Card extends React.Component {

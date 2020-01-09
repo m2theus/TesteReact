@@ -5,8 +5,6 @@ import "../App.css";
 import styled from "styled-components";
 
 export default class Paginate extends React.Component {
-
- 
   render() {
     return (
       <div className="container-paginate">
@@ -29,7 +27,7 @@ export default class Paginate extends React.Component {
 }
 
 export const ArrowLeft = styled("div")`
-width: 0;
+  width: 0;
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
@@ -39,7 +37,7 @@ width: 0;
 `;
 
 export const ArrowRigth = styled("div")`
-width: 0;
+  width: 0;
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;

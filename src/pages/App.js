@@ -1,15 +1,15 @@
 import React from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import Navbar from "../components/Navbar";
 import Busca from "../components/Busca";
 import Paginate from "../components/Paginate";
 import "../App.css";
 import { axiosInstance } from "../config/Axios";
-import { useHistory } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-export default class App extends React.Component {
-  constructor() {
-    super();
+class App extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       dados: [],
       paginaAtual: 0,
@@ -20,12 +20,12 @@ export default class App extends React.Component {
       hero: []
     };
   }
-  history = useHistory();
   onItemClick = hero => {
     this.setState({
       hero: hero
     });
-    this.history.push(`/detalhes/${hero.id}`);
+
+    this.props.history.push(`/detalhe/${hero.id}`);
   };
 
   componentDidMount() {
@@ -36,7 +36,7 @@ export default class App extends React.Component {
     this.setState({
       loading: true
     });
-    const response = await axiosInstance
+    await axiosInstance
       .get(
         `/characters?page[limit]=10&page[offset]=${page * 10}${this.state
           .dsPesquisa && `&filter[name]=${this.state.dsPesquisa}`}`
@@ -88,7 +88,10 @@ export default class App extends React.Component {
           isFirstPage={this.state.currentPage === 0}
           isLastPage={this.state.currentPage + 1 >= this.state.totalCount}
         />
+        <div className="footer"></div>
       </div>
     );
   }
 }
+
+export default withRouter(App);

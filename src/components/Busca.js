@@ -1,39 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import  '../App.css'
-import { string, func } from "prop-types";
+import React from "react";
+import "../App.css";
+import { func } from "prop-types";
 import { DebounceInput } from "react-debounce-input";
 
-export default class Busca extends React.Component{
-    constructor() {
-        super();
-        this.state = {
-            dsBusca: ''
-        }; 
-    }
-    handleFNameChange(event){
-        this.setState({dsBusca: event.target.value});
-    }
-    render(
-    ){
-        return(
-            <div className="container-busca">
-                <label className="label-busca">Nome do personagem: </label>
-                <DebounceInput
-                className="input-busca"
-                    debounceTimeout={300}
-                    onChange={this.props.onChange}
-                    forceNotifyByEnter
-                    forceNotifyOnBlur
-                />
-                {/* <input className="input-busca" type="text" onChange={this.props.onChange}/> */}
-            </div>
-        );
-    }
-
-  
+export default class Busca extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      dsBusca: ""
+    };
+  }
+  handleFNameChange(event) {
+    this.setState({ dsBusca: event.target.value });
+  }
+  render() {
+    return (
+      <div className="container-busca">
+        <label className="label-busca">Nome do personagem: </label>
+        <DebounceInput
+          className="input-busca"
+          debounceTimeout={300}
+          onChange={this.props.onChange}
+          forceNotifyByEnter
+          forceNotifyOnBlur
+        />
+      </div>
+    );
+  }
 }
 
 Busca.propTypes = {
-    onChange: func,
-  };
+  onChange: func
+};
