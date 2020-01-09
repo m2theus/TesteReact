@@ -4,15 +4,6 @@ import { func } from "prop-types";
 import { DebounceInput } from "react-debounce-input";
 
 export default class Busca extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      dsBusca: ""
-    };
-  }
-  handleFNameChange(event) {
-    this.setState({ dsBusca: event.target.value });
-  }
   render() {
     return (
       <div className="container-busca">

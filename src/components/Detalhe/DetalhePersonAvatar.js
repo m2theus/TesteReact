@@ -26,5 +26,5 @@ export default class DetalhePersonAvatar extends React.Component {
 
 DetalhePersonAvatar.propTypes = {
   image: string,
-  name: string
+  name: string,
 };

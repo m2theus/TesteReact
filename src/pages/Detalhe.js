@@ -27,6 +27,7 @@ class Detalhe extends React.Component {
     await axiosInstance
       .get(`/characters/${this.props.match.params.id}`)
       .then(retorno => {
+          console.log(retorno);
         this.setState({
           loading: false,
           hero: retorno.data.data
@@ -48,6 +49,7 @@ class Detalhe extends React.Component {
                 onClick={() => this.props.history.push("/")}
               />
             </div>
+        
             <DetalhePersonAvatar
               image={
                 this.state.hero.attributes.image &&
@@ -55,6 +57,8 @@ class Detalhe extends React.Component {
               }
               name={this.state.hero.attributes.name}
             />
+            
+            <div className="descricao-heroe" dangerouslySetInnerHTML={{ __html: this.state.hero.attributes.description }}></div>
             <DetalheMediaAvatar
               link={this.state.hero.relationships.mediaCharacters.links.related}
             />

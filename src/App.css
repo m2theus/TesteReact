@@ -294,7 +294,7 @@ body {
 }
 
 .container-media {
-  width: 100%;
+
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -302,13 +302,22 @@ body {
 .colum-media {
   padding-left: 0px !important;
   margin-left: 0px !important;
+  margin-right: 0px !important;
+  max-width: 100% !important;
 }
 
 @media only screen and (min-width: 992px) {
   .container-media {
     padding-right: 42px !important;
     padding-left: 42px !important;
-    width: 100%;
+    margin-right: 0px !important;
+    max-width: 100% !important;
+  }
+
+  .descricao-heroe {
+    text-align: justify;
+    padding-right: 42px !important;
+    padding-left: 42px !important;
   }
 }
 
@@ -338,4 +347,12 @@ body {
   bottom: 0;
   width: 100%;
   background: rgba(212, 32, 38, 1);
+}
+
+.descricao-heroe {
+  text-align: justify;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: gray;
+  font-size: 16px;
 }

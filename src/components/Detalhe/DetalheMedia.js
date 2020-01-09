@@ -60,11 +60,11 @@ export default class DetalheMediaAvatar extends React.Component {
                       value={(attributes.averageRating / 100) * 5}
                     />
                   </Col>
-                  <Col>
+                  <Col >
                     <div className="title-atribute">
                       {attributes.canonicalTitle}{" "}
                     </div>
-                    <div className="synopsis"> {attributes.synopsis} </div>
+                    <div className="synopsis" > {attributes.synopsis} </div>
                   </Col>
                 </Row>
               </div>

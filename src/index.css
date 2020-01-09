@@ -2,14 +2,8 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
     font-family: "Roboto", sans-serif;
     src: url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
     margin: 0;
     min-height: 100vh;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
