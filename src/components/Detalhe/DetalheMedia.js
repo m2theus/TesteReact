@@ -21,7 +21,7 @@ export default class DetalheMediaAvatar extends React.Component {
       loading: true
     });
 
-    const fetchMedias = async medias => {
+    const getMedias = async medias => {
       const allMedias = medias.map(async item => {
         const media = await axiosInstance.get(
           item.relationships.media.links.related
@@ -36,7 +36,7 @@ export default class DetalheMediaAvatar extends React.Component {
     };
 
     await axiosInstance.get(this.props.link).then(async retorno => {
-      await fetchMedias(retorno.data.data);
+      await getMedias(retorno.data.data);
     });
   }
 

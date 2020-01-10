@@ -36,7 +36,7 @@ export default class Navbar extends React.Component {
           </Col>
           <Col lg="content">
             <Hidden xs sm md lg>
-              <div className="participante-header">MATHEUS</div>
+              <div className="participante-header">MATHEUS MOLINETE</div>
             </Hidden>
           </Col>
         </Row>

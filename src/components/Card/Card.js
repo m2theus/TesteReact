@@ -6,7 +6,6 @@ import ListItem from "./CardItem";
 
 export default class Card extends React.Component {
   render() {
-    console.log(this.props)
     return ( 
       <Container className="container-card">
         <Row gutterWidth={10}>

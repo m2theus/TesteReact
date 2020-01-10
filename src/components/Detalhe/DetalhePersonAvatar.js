@@ -13,7 +13,7 @@ export default class DetalhePersonAvatar extends React.Component {
   render() {
     return (
       <Col align="center" className="container-detalhe-person">
-        <Row xs="content">
+        <Row >
           <Avatar src={this.props.image} />
         </Row>
         <Row>
